@@ -19,9 +19,9 @@ class LinkedList:
         if self.head == None:
             return None
         
-        popped_node = self.head
-        self.head = self.head.next_address
-        return popped_node.data
+        pop_node = self.head
+        self.head = pop_node.next_address
+        return pop_node.data
 
     def is_empty(self):
         if self.head == None:
@@ -35,14 +35,14 @@ def is_valid_bracket(arifm_expression):
     linked_list = LinkedList()
 
     for symb in arifm_expression:
-        if symb == '(':
+        if symb == '(' :
             linked_list.push(symb)
         elif symb == ')':
-            if linked_list.is_empty():  # if empty =  false
+            if linked_list.is_empty():
                 return False
             linked_list.pop()
 
-    return linked_list.is_empty()  # if empty = True
+    return linked_list.is_empty()
 
 
 class TestNode(unittest.TestCase):
@@ -52,6 +52,8 @@ class TestNode(unittest.TestCase):
         self.assertTrue(is_valid_bracket("((a + b))"))
 
     def test_invalid_expressions(self):
+        self.assertFalse(is_valid_bracket(")"))
+        self.assertFalse(is_valid_bracket("("))
         self.assertFalse(is_valid_bracket("(a + b * (c - d)"))
         self.assertFalse(is_valid_bracket("a + b) * c"))
         self.assertFalse(is_valid_bracket(")a + b) * c"))
