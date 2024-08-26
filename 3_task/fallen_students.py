@@ -5,7 +5,7 @@ def fallen_student(A, Na, B, Nb):
     fallen_list = []
     
     for i in range(0, Na):
-        if A[i] not in B[i]:
+        if A[i] not in B:
             fallen_list.append(A[i])
     
     return fallen_list
@@ -29,6 +29,16 @@ class TestFindSlidings(unittest.TestCase):
         Nb = len(B)
 
         C = []
+
+        self.assertEqual(C, fallen_student(A, Na, B, Nb))
+
+    def test_list_3(self):
+        A = ['Иванов', 'Петров', 'Сидоров', 'Мариванна']
+        B = ['Иванов']
+        Na = len(A)
+        Nb = len(B)
+
+        C = ['Петров', 'Сидоров', 'Мариванна']
 
         self.assertEqual(C, fallen_student(A, Na, B, Nb))
 
